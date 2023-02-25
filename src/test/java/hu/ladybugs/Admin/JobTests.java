@@ -1,4 +1,7 @@
 package hu.ladybugs.Admin;
 
-public class JobTests {
+
+import hu.ladybugs.driverfactory.DriverBaseTest;
+
+public class JobTests extends DriverBaseTest {
 }
