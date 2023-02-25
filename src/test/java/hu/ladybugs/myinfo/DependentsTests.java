@@ -1,4 +1,8 @@
 package hu.ladybugs.myinfo;
 
-public class DependentsTests {
+import hu.ladybugs.driverfactory.DriverBaseTest;
+import hu.ladybugs.myinfo.pages.DependencePage;
+
+public class DependentsTests extends DriverBaseTest {
+    DependencePage dependencePage;
 }

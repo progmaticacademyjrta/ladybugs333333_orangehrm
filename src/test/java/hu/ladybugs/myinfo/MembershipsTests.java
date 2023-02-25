@@ -1,4 +1,7 @@
 package hu.ladybugs.myinfo;
 
-public class MembershipsTests {
+import hu.ladybugs.driverfactory.DriverBaseTest;
+
+public class MembershipsTests extends DriverBaseTest {
+    MembershipsTests membershipsTests;
 }
