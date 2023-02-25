@@ -1,4 +1,6 @@
 package hu.ladybugs.pim;
 
-public class ConfigurationTests {
+import hu.ladybugs.driverfactory.DriverBaseTest;
+
+public class ConfigurationTests extends DriverBaseTest {
 }
