@@ -13,8 +13,5 @@ public class ContactDetailsTests extends DriverBaseTest {
         contactDetailsPage.loadHomePage();
         contactDetailsPage.loginWhitValidUsernameAndValidPwd();
         contactDetailsPage.contactDetailsFillingAndSaving();
-
     }
-
-
 }

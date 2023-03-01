@@ -41,14 +41,18 @@ public class PersonalDetailsPage {
     By bloodTypeSelectElement = By.xpath("//*[@id=\"app\"]/div[1]/div[2]/div[2]/div/div/div/div[2]/div[2]/div/form/div[1]/div/div/div/div[2]/div/div/div[1]");
     By attachmentAddButtonElement = By.cssSelector("button[class='oxd-button oxd-button--medium oxd-button--text']");
     By getAttachmentCommentElement = By.cssSelector("textarea[class='oxd-textarea oxd-textarea--active oxd-textarea--resize-vertical']");
-    By AttachmentBrowseElement = By.cssSelector("div[class='oxd-file-button']");
+    By AttachmentBrowseElement = By.xpath("//*[@id=\"app\"]/div[1]/div[2]/div[2]/div/div/div/div[2]/div[3]/div/form/div[1]/div/div/div/div[2]/input");
 
     By checkboxDeleteElement = By.xpath("//*[@id=\"app\"]/div[1]/div[2]/div[2]/div/div/div/div[2]/div[3]/div[3]/div/div[2]/div/div/div[1]/div/div/label/span/i");
-
+    By attachmentsAddSaveButtonElement = By.xpath("//*[@id=\"app\"]/div[1]/div[2]/div[2]/div/div/div/div[2]/div[3]/div/form/div[3]/button[2]");
     By recordDeleteIconElement = By.xpath("//*[@id=\"app\"]/div[1]/div[2]/div[2]/div/div/div/div[2]/div[3]/div[3]/div/div[2]/div[1]/div/div[8]/div/button[2]/i");
     By yesDeletePopupButtonElement = By.cssSelector("button[class='oxd-button oxd-button--medium oxd-button--label-danger orangehrm-button-margin']");
 
-    By recordDeleteCancelButtonElement=By.cssSelector("button[class='oxd-button oxd-button--medium oxd-button--text orangehrm-button-margin']");
+    By recordDeleteCancelButtonElement = By.cssSelector("button[class='oxd-button oxd-button--medium oxd-button--text orangehrm-button-margin']");
+
+    By recordEditingPencilIconElement = By.xpath("//*[@id=\"app\"]/div[1]/div[2]/div[2]/div/div/div/div[2]/div[3]/div[3]/div/div[2]/div[1]/div/div[8]/div/button[1]/i");
+    By attachmentAddInputElement = By.xpath("//*[@id=\"app\"]/div[1]/div[2]/div[2]/div/div/div/div[2]/div[3]/div/form/div[2]/div/div/div/div[2]/input");
+    By attachmentSaveButtonElement = By.xpath("//*[@id=\"app\"]/div[1]/div[2]/div[2]/div/div/div/div[2]/div[3]/div/form/div[4]/button[2]");
 
     public PersonalDetailsPage(WebDriver driver, WebDriverWait wait) {
         this.driver = driver;
@@ -85,16 +89,20 @@ public class PersonalDetailsPage {
         WebElement firstName = driver.findElement(firstNameElement);
         wait.until(ExpectedConditions.elementToBeClickable(firstNameElement));
         Thread.sleep(3000);
+        firstName.sendKeys(Keys.chord(Keys.CONTROL, "a"));
+        firstName.sendKeys(Keys.BACK_SPACE);
         firstName.click();
-        firstName.clear();
         firstName.sendKeys("Robert");
 
         WebElement middleName = driver.findElement(middleNameElement);
+        middleName.sendKeys(Keys.chord(Keys.CONTROL, "a"));
+        middleName.sendKeys(Keys.BACK_SPACE);
         middleName.click();
         middleName.sendKeys("Paul");
 
         WebElement lastName = driver.findElement(lastNameElement);
-        lastName.clear();
+        lastName.sendKeys(Keys.chord(Keys.CONTROL, "a"));
+        lastName.sendKeys(Keys.BACK_SPACE);
         lastName.click();
         lastName.sendKeys("Smith");
 
@@ -104,32 +112,38 @@ public class PersonalDetailsPage {
         // nickName.sendKeys("Robi");
 
         WebElement employeeId = driver.findElement(employeeIdElement);
-        employeeId.clear();
+        employeeId.sendKeys(Keys.chord(Keys.CONTROL, "a"));
+        employeeId.sendKeys(Keys.BACK_SPACE);
         employeeId.click();
         employeeId.sendKeys("1234");
 
         WebElement otherId = driver.findElement(otherIdElement);
-        otherId.clear();
+        otherId.sendKeys(Keys.chord(Keys.CONTROL, "a"));
+        otherId.sendKeys(Keys.BACK_SPACE);
         otherId.click();
         otherId.sendKeys("2345");
 
         WebElement driversLicenseNumber = driver.findElement(driversLicenseNumberElement);
-        driversLicenseNumber.clear();
+        driversLicenseNumber.sendKeys(Keys.chord(Keys.CONTROL, "a"));
+        driversLicenseNumber.sendKeys(Keys.BACK_SPACE);
         driversLicenseNumber.click();
         driversLicenseNumber.sendKeys("1234");
 
         WebElement licenseExpiryDate = driver.findElement(licenseExpiryDateElement);
-        licenseExpiryDate.clear();
+        licenseExpiryDate.sendKeys(Keys.chord(Keys.CONTROL, "a"));
+        licenseExpiryDate.sendKeys(Keys.BACK_SPACE);
         licenseExpiryDate.click();
         licenseExpiryDate.sendKeys("2023-03-09");
 
         WebElement ssnNumber = driver.findElement(ssnNumberElement);
-        ssnNumber.clear();
+        ssnNumber.sendKeys(Keys.chord(Keys.CONTROL, "a"));
+        ssnNumber.sendKeys(Keys.BACK_SPACE);
         ssnNumber.click();
         ssnNumber.sendKeys("235-23-4569");
 
         WebElement sinNumber = driver.findElement(sinNumberElement);
-        sinNumber.clear();
+        sinNumber.sendKeys(Keys.chord(Keys.CONTROL, "a"));
+        sinNumber.sendKeys(Keys.BACK_SPACE);
         sinNumber.click();
         sinNumber.sendKeys("123 123 123");
 
@@ -179,32 +193,29 @@ public class PersonalDetailsPage {
 
     }
 
-   /* public void attachmentsAdd() throws InterruptedException {
+    public void attachmentsAdd() throws InterruptedException {
         WebElement bloodTypeToScroll = driver.findElement(bloodTypeSelectElement);
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("arguments[0].scrollIntoView();", bloodTypeToScroll);
 
-        // File feltöltés manuális
 
-        WebElement attachmentAddButton=driver.findElement(attachmentAddButtonElement);
+        WebElement attachmentAddButton = driver.findElement(attachmentAddButtonElement);
         attachmentAddButton.click();
         WebElement attachmentBrowse = driver.findElement(AttachmentBrowseElement);
-        attachmentBrowse.click();
-        Thread.sleep(13000);
         attachmentBrowse.sendKeys("C:\\Users\\PC\\Downloads\\Fa.jpg");
-        Thread.sleep(13000);
 
         WebElement getAttachmentComment = driver.findElement(getAttachmentCommentElement);
         getAttachmentComment.click();
         getAttachmentComment.sendKeys("Other information");
 
-        WebElement savedMessageForAttachment = driver.findElement(savedMessageElement);
+        WebElement attachmentsAddSaveButton = driver.findElement(attachmentsAddSaveButtonElement);
+        attachmentsAddSaveButton.click();
+
+        WebElement savedMessageForAttachment = driver.findElement(confirmatoryMessageElement);
         wait.until(ExpectedConditions.elementToBeClickable(savedMessageForAttachment));
-        Assert.assertTrue(savedMessageForAttachment.isDisplayed());
 
 
-
-    }*/
+    }
 
     public void recordsFoundDelete() throws InterruptedException {
         WebElement recordDeleteScroll = driver.findElement(bloodTypeSelectElement);
@@ -225,7 +236,6 @@ public class PersonalDetailsPage {
         wait.until(ExpectedConditions.elementToBeClickable(deleteMessage));
         Assert.assertTrue(deleteMessage.isDisplayed());
 
-        Thread.sleep(13000);
     }
 
     public void recordsFoundDeleteCancel() throws InterruptedException {
@@ -237,12 +247,32 @@ public class PersonalDetailsPage {
         checkboxDelete.click();
         WebElement recordDeleteIcon = driver.findElement(recordDeleteIconElement);
         recordDeleteIcon.click();
-        WebElement recordDeleteCancelButton=driver.findElement(recordDeleteCancelButtonElement);
+        WebElement recordDeleteCancelButton = driver.findElement(recordDeleteCancelButtonElement);
         wait.until(ExpectedConditions.elementToBeClickable(recordDeleteCancelButton));
         recordDeleteCancelButton.click();
-
-        Thread.sleep(13000);
+        Assert.assertTrue(checkboxDelete.isDisplayed());
     }
 
+    public void personalDetailsRecordsFoundEditingFunction() throws InterruptedException {
+        WebElement recordDeleteScroll = driver.findElement(bloodTypeSelectElement);
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("arguments[0].scrollIntoView();", recordDeleteScroll);
 
+        WebElement recordEditingPencilIcon = driver.findElement(recordEditingPencilIconElement);
+        recordEditingPencilIcon.click();
+
+        WebElement attachmentBrowse = driver.findElement(attachmentAddInputElement);
+        attachmentBrowse.sendKeys("C:\\Users\\PC\\Downloads\\playground.png");
+
+        WebElement attachmentSaveButton = driver.findElement(attachmentSaveButtonElement);
+        attachmentSaveButton.click();
+
+        WebElement savedMessageForAttachment = driver.findElement(confirmatoryMessageElement);
+        wait.until(ExpectedConditions.elementToBeClickable(savedMessageForAttachment));
+
+
+        Thread.sleep(7000);
+
+
+    }
 }

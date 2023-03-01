@@ -30,6 +30,14 @@ public class ContactDetailsPage {
     By telephoneMobileFieldElement = By.xpath("//*[@id=\"app\"]/div[1]/div[2]/div[2]/div/div/div/div[2]/div[1]/form/div[2]/div/div[2]/div/div[2]/input");
     By telephoneWorkFieldElement = By.xpath("//*[@id=\"app\"]/div[1]/div[2]/div[2]/div/div/div/div[2]/div[1]/form/div[2]/div/div[3]/div/div[2]/input");
 
+    By workEmailFieldElement = By.xpath("//*[@id=\"app\"]/div[1]/div[2]/div[2]/div/div/div/div[2]/div[1]/form/div[3]/div/div[1]/div/div[2]/input");
+
+    By otherEmailFieldElement = By.xpath("//*[@id=\"app\"]/div[1]/div[2]/div[2]/div/div/div/div[2]/div[1]/form/div[3]/div/div[2]/div/div[2]/input");
+
+    By saveButtonElement = By.cssSelector("button[class='oxd-button oxd-button--medium oxd-button--secondary orangehrm-left-space']");
+
+    By confirmationMessageElement = By.id("oxd-toaster_1");
+
 
     public ContactDetailsPage(WebDriver driver, WebDriverWait wait) {
         this.driver = driver;
@@ -66,20 +74,30 @@ public class ContactDetailsPage {
         contactDetails.click();
 
         WebElement street1 = driver.findElement(street1Element);
-        street1.click();
+      //  street1.click();
+        street1.sendKeys(Keys.chord(Keys.CONTROL,"a"));
+        street1.sendKeys(Keys.BACK_SPACE);
         street1.sendKeys("Freedom Street");
 
         WebElement street2 = driver.findElement(street2Element);
-        street2.click();
+        //street2.click();
+        street2.sendKeys(Keys.chord(Keys.CONTROL,"a"));
+        street2.sendKeys(Keys.BACK_SPACE);
         street2.sendKeys("Other Street");
 
         WebElement cityField = driver.findElement(cityFieldElement);
+        cityField.sendKeys(Keys.chord(Keys.CONTROL,"a"));
+        cityField.sendKeys(Keys.BACK_SPACE);
         cityField.sendKeys("Budapest");
 
         WebElement stateField = driver.findElement(stateFieldElement);
+        stateField.sendKeys(Keys.chord(Keys.CONTROL,"a"));
+        stateField.sendKeys(Keys.BACK_SPACE);
         stateField.sendKeys("kerület");
 
         WebElement zipCodeField = driver.findElement(zipCodeFieldElement);
+        zipCodeField.sendKeys(Keys.chord(Keys.CONTROL,"a"));
+        zipCodeField.sendKeys(Keys.BACK_SPACE);
         zipCodeField.sendKeys("1039");
 
         WebElement countrySearchArrow = driver.findElement(countrySearchArrowElement);
@@ -91,19 +109,36 @@ public class ContactDetailsPage {
         getCountrySearch.sendKeys(Keys.RETURN);
 
         WebElement telephoneHomeField = driver.findElement(telephoneHomeFieldElement);
+        telephoneHomeField.sendKeys(Keys.chord(Keys.CONTROL,"a"));
+        telephoneHomeField.sendKeys(Keys.BACK_SPACE);
         telephoneHomeField.sendKeys("+3611234356");
 
         WebElement telephoneMobileField = driver.findElement(telephoneMobileFieldElement);
+        telephoneMobileField.sendKeys(Keys.chord(Keys.CONTROL,"a"));
+        telephoneMobileField.sendKeys(Keys.BACK_SPACE);
         telephoneMobileField.sendKeys("+3611234356");
 
         WebElement telephoneWorkField = driver.findElement(telephoneWorkFieldElement);
+        telephoneWorkField.sendKeys(Keys.chord(Keys.CONTROL,"a"));
+        telephoneWorkField.sendKeys(Keys.BACK_SPACE);
         telephoneWorkField.sendKeys("+3611234356");
 
+        WebElement workEmail = driver.findElement(workEmailFieldElement);
+        workEmail.sendKeys(Keys.chord(Keys.CONTROL,"a"));
+        workEmail.sendKeys(Keys.BACK_SPACE);
+        workEmail.sendKeys("john@gamil.com");
 
+        WebElement otherEmailField = driver.findElement(otherEmailFieldElement);
+        otherEmailField.sendKeys(Keys.chord(Keys.CONTROL,"a"));
+        otherEmailField.sendKeys(Keys.BACK_SPACE);
+        otherEmailField.sendKeys("london@gmail.com");
 
+        WebElement saveButton = driver.findElement(saveButtonElement);
+        saveButton.click();
 
-
-        Thread.sleep(7000);
+        WebElement confirmationMessage = driver.findElement(confirmationMessageElement);
+        confirmationMessage.isDisplayed();
+          Thread.sleep(7000);
 
 
     }

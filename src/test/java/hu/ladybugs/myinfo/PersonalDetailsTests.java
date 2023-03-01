@@ -24,20 +24,21 @@ public class PersonalDetailsTests extends DriverBaseTest {
         personalDetailsPage.personalDetailsDataFillingAndSaving();
     }
 
-   /* @Test(description = "")
-    public void personalDetailsAttachmentsAdd() throws InterruptedException {
+    @Test
+    public void attachmentsAdd() throws InterruptedException {
         personalDetailsPage = new PersonalDetailsPage(driver, wait);
         personalDetailsPage.loadHomePage();
         personalDetailsPage.loginWhitValidUsernameAndValidPwd();
         personalDetailsPage.attachmentsAdd();
+    }
 
-    }*/
 
     @Test(description = "")
     public void recordsFoundDeleteFunction() throws InterruptedException {
         personalDetailsPage = new PersonalDetailsPage(driver, wait);
         personalDetailsPage.loadHomePage();
         personalDetailsPage.loginWhitValidUsernameAndValidPwd();
+        personalDetailsPage.attachmentsAdd();
         personalDetailsPage.recordsFoundDelete();
 
     }
@@ -46,8 +47,17 @@ public class PersonalDetailsTests extends DriverBaseTest {
         personalDetailsPage = new PersonalDetailsPage(driver, wait);
         personalDetailsPage.loadHomePage();
         personalDetailsPage.loginWhitValidUsernameAndValidPwd();
+        personalDetailsPage.attachmentsAdd();
         personalDetailsPage.recordsFoundDeleteCancel();
 
     }
 
+    @Test
+    public void personalDetailsRecordsFoundEditingFunction() throws InterruptedException {
+        personalDetailsPage = new PersonalDetailsPage(driver, wait);
+        personalDetailsPage.loadHomePage();
+        personalDetailsPage.loginWhitValidUsernameAndValidPwd();
+        personalDetailsPage.attachmentsAdd();
+        personalDetailsPage.personalDetailsRecordsFoundEditingFunction();
+    }
 }
