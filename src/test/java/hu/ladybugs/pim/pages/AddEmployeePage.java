@@ -122,4 +122,35 @@ public class AddEmployeePage {
         popUpWindowDelete.click();
         System.out.println("The employee has been deleted");
     }
+
+    public void clearTheAddEmployeeDataWithCancelButton(){
+        clickOnAddButton();
+        WebElement newEmployeeFirstName = driver.findElement(By.xpath("//*[@id=\"app\"]/div[1]/div[2]/div[2]/div/div/form/div[1]/div[2]/div[1]/div[1]/div/div/div[2]/div[1]/div[2]/input"));
+        newEmployeeFirstName.sendKeys("Kate");
+        WebElement newEmployeeLastName = driver.findElement(By.xpath("//*[@id=\"app\"]/div[1]/div[2]/div[2]/div/div/form/div[1]/div[2]/div[1]/div[1]/div/div/div[2]/div[3]/div[2]/input"));
+        newEmployeeLastName.sendKeys("House");
+        WebElement fileUploadInput = driver.findElement(By.xpath("//*[@id=\"app\"]/div[1]/div[2]/div[2]/div/div/form/div[1]/div[1]/div/div[2]/div/button"));
+        String path = System.getProperty("user.dir");
+        System.out.println("Working Directory = " + path);
+        fileUploadInput.sendKeys(path+ "\\C:\\Users\\Kinga\\Documents\\bee.jpeg");
+        System.out.println("Photo upload was successfully");
+        WebElement createLoginDetailsSwitchButton = driver.findElement(By.xpath("//*[@id=\"app\"]/div[1]/div[2]/div[2]/div/div/form/div[1]/div[2]/div[2]/div/label/span"));
+        createLoginDetailsSwitchButton.click();
+        System.out.println("Clicked on the Login Details switch");
+        WebElement username = driver.findElement(By.xpath("//*[@id=\"app\"]/div[1]/div[2]/div[2]/div/div/form/div[1]/div[2]/div[3]/div/div[1]/div/div[2]/input"));
+        username.sendKeys("kateHouse0123");
+        WebElement status = driver.findElement(By.xpath("//*[@id=\"app\"]/div[1]/div[2]/div[2]/div/div/form/div[1]/div[2]/div[3]/div/div[2]/div/div[2]/div[2]/div[2]/div/label/span"));
+        status.click();
+        WebElement password = driver.findElement(By.xpath("//*[@id=\"app\"]/div[1]/div[2]/div[2]/div/div/form/div[1]/div[2]/div[4]/div/div[1]/div/div[2]/input"));
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("arguments[0].scrollIntoView();", password);
+        System.out.println("Scrolled down");
+        password.sendKeys("secretPassword-0123");
+        WebElement confirmPassword = driver.findElement(By.xpath("//*[@id=\"app\"]/div[1]/div[2]/div[2]/div/div/form/div[1]/div[2]/div[4]/div/div[2]/div/div[2]/input"));
+        confirmPassword.sendKeys("secretPassword-0123");
+        WebElement cancelButton = driver.findElement(By.xpath("//*[@id=\"app\"]/div[1]/div[2]/div[2]/div/div/form/div[2]/button[1]"));
+        cancelButton.click();
+        Assert.assertEquals(driver.getCurrentUrl(),"https://opensource-demo.orangehrmlive.com/web/index.php/pim/viewEmployeeList");
+        System.out.println("Navigated to Employee List page successfully");
+    }
 }

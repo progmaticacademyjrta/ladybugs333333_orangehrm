@@ -17,10 +17,13 @@ public class ReportsTests extends DriverBaseTest {
         employeeListPage = new EmployeeListPage(driver, wait);
         addEmployeePage = new AddEmployeePage(driver, wait);
         reportsPage = new ReportsPage(driver,wait);
+        reportsPage.login();
+        reportsPage.navigateToPIMMenu();
         reportsPage.navigateToReportsMenuPoint();
         reportsPage.searchEmployeeReport();
         reportsPage.useAddButtonInReportsPage();
         reportsPage.saveANewReport();
-        reportsPage.theNewReportIsSearchable();
+        reportsPage.theEmployeeReportsSearchingCanBeReset();
+        reportsPage.clearTheAddReportDataWithCancelButton();
     }
 }

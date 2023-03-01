@@ -18,5 +18,6 @@ public class AddEmployeeTests extends DriverBaseTest {
         addEmployeePage.saveANewEmployee();
         addEmployeePage.theNewEmployeeIsSearchable(); //felhasználónevet megváltoztatni minden futtatásnál, vagy törölni.
         addEmployeePage.theNewEmployeeCanBeDeleted();
+        addEmployeePage.clearTheAddEmployeeDataWithCancelButton();
     }
 }

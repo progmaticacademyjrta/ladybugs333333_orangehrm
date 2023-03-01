@@ -94,6 +94,14 @@ public class ReportsPage {
         selectDisplayFieldGroupDropDown.sendKeys(Keys.DOWN);
         selectDisplayFieldGroupDropDown.sendKeys(Keys.DOWN);
         selectDisplayFieldGroupDropDown.sendKeys(Keys.RETURN);
+        WebElement selectDisplayFieldDropDownArrow = driver.findElement(By.xpath("//*[@id=\"app\"]/div[1]/div[2]/div[2]/div/div/form/div[3]/div/div[2]/div[1]/div[2]/div/div/div[2]/i"));
+        selectDisplayFieldDropDownArrow.click();
+        WebElement selectDisplayFieldDropDown = driver.findElement(By.xpath("//*[@id=\"app\"]/div[1]/div[2]/div[2]/div/div/form/div[3]/div/div[2]/div[1]/div[2]/div/div/div[1]"));
+        selectDisplayFieldDropDown.sendKeys(Keys.DOWN);
+        selectDisplayFieldDropDown.sendKeys(Keys.DOWN);
+        selectDisplayFieldDropDown.sendKeys(Keys.RETURN);
+        WebElement displayFieldsAddButton = driver.findElement(By.xpath("//*[@id=\"app\"]/div[1]/div[2]/div[2]/div/div/form/div[3]/div/div[2]/div[2]/div[2]/button"));
+        displayFieldsAddButton.click();
         WebElement saveButton = driver.findElement(By.xpath("//*[@id=\"app\"]/div[1]/div[2]/div[2]/div/div/form/div[4]/button[2]"));
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("arguments[0].scrollIntoView();", saveButton);
@@ -101,8 +109,50 @@ public class ReportsPage {
         System.out.println("The new report has been saved");
     }
 
-    public void theNewReportIsSearchable(){
-        WebElement reportsMenuPoint = driver.findElement(By.xpath("//*[@id=\"app\"]/div[1]/div[1]/header/div[2]/nav/ul/li[4]"));
-        reportsMenuPoint.click();
+    public void theEmployeeReportsSearchingCanBeReset(){
+        navigateToReportsMenuPoint();
+        WebElement reportNameField = driver.findElement(By.xpath("//*[@id=\"app\"]/div[1]/div[2]/div[2]/div/div/form/div[1]/div/div/div/div[2]/input"));
+        reportNameField.sendKeys("E");
+        reportNameField.sendKeys(Keys.DOWN);
+        reportNameField.sendKeys(Keys.DOWN);
+        reportNameField.sendKeys(Keys.RETURN);
+        System.out.println("Report name field has been filled with "+reportNameField);
+        WebElement resetButton = driver.findElement(By.xpath("//*[@id=\"app\"]/div[1]/div[2]/div[2]/div/div[1]/div[2]/form/div[2]/button[1]"));
+        resetButton.click();
+        resetButton.click();
+        System.out.println("Clicked on the Reset button");
+        Assert.assertEquals(reportNameField.getText(), "Type for hints...");
+        System.out.println("Reseted the searching informations.");
+    }
+
+    public void clearTheAddReportDataWithCancelButton(){
+        useAddButtonInReportsPage();
+        WebElement reportNameField = driver.findElement(By.xpath("//*[@id=\"app\"]/div[1]/div[2]/div[2]/div/div[1]/div[2]/form/div[1]/div/div/div/div[2]/div/div/input"));
+        reportNameField.sendKeys("Example Report");
+        WebElement selectionCriteriaDropDownArrow = driver.findElement(By.xpath("//*[@id=\"app\"]/div[1]/div[2]/div[2]/div/div/form/div[2]/div/div[1]/div[1]/div[2]/div/div/div[2]/i"));
+        selectionCriteriaDropDownArrow.click();
+        WebElement selectionCriteriaDropDown = driver.findElement(By.xpath("//*[@id=\"app\"]/div[1]/div[2]/div[2]/div/div/form/div[2]/div/div[1]/div[1]/div[2]/div/div/div[1]"));
+        selectionCriteriaDropDown.sendKeys(Keys.DOWN);
+        selectionCriteriaDropDown.sendKeys(Keys.DOWN);
+        selectionCriteriaDropDown.sendKeys(Keys.RETURN);
+        WebElement includeDropDownArrow = driver.findElement(By.xpath("//*[@id=\"app\"]/div[1]/div[2]/div[2]/div/div/form/div[2]/div/div[2]/div/div[2]/div/div/div[2]/i"));
+        includeDropDownArrow.click();
+        WebElement includeDropDown = driver.findElement(By.xpath("//*[@id=\"app\"]/div[1]/div[2]/div[2]/div/div/form/div[2]/div/div[2]/div/div[2]/div/div/div[1]"));
+        includeDropDown.sendKeys(Keys.DOWN);
+        includeDropDown.sendKeys(Keys.DOWN);
+        includeDropDown.sendKeys(Keys.RETURN);
+        WebElement selectDisplayFieldGroupDropDownArrow = driver.findElement(By.xpath("//*[@id=\"app\"]/div[1]/div[2]/div[2]/div/div/form/div[3]/div/div[1]/div/div[2]/div/div/div[2]/i"));
+        selectDisplayFieldGroupDropDownArrow.click();
+        WebElement selectDisplayFieldGroupDropDown = driver.findElement(By.xpath("//*[@id=\"app\"]/div[1]/div[2]/div[2]/div/div/form/div[3]/div/div[1]/div/div[2]/div/div/div[1]"));
+        selectDisplayFieldGroupDropDown.sendKeys(Keys.DOWN);
+        selectDisplayFieldGroupDropDown.sendKeys(Keys.DOWN);
+        selectDisplayFieldGroupDropDown.sendKeys(Keys.DOWN);
+        selectDisplayFieldGroupDropDown.sendKeys(Keys.DOWN);
+        selectDisplayFieldGroupDropDown.sendKeys(Keys.RETURN);
+        WebElement cancelButton = driver.findElement(By.xpath("//*[@id=\"app\"]/div[1]/div[2]/div[2]/div/div/form/div[4]/button[1]"));
+        cancelButton.click();
+        System.out.println("Clicked on the Cancel button");
+        Assert.assertEquals(selectionCriteriaDropDown.getText(), "-- Select --");
+        System.out.println("Canceled the informations.");
     }
 }

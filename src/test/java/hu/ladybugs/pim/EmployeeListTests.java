@@ -9,12 +9,14 @@ public class EmployeeListTests extends DriverBaseTest {
     EmployeeListPage employeeListPage;
 
     @Test(description = "")
-    public void navigateToPIMPageAndSearchEmployeeInformationTest() {
+    public void navigateToPIMPageAndSearchEmployeeInformationTest() throws InterruptedException {
         employeeListPage = new EmployeeListPage(driver,wait);
-        //employeeListPage.loadLoginPage();
         employeeListPage.login();
         employeeListPage.navigateToPIMMenu();
         employeeListPage.employeeInformationSearch();
+        employeeListPage.clearTheSearchInformations();
+        employeeListPage.deleteRecord();
+        employeeListPage.editRecord();
     }
 
     @Test (description = "")
