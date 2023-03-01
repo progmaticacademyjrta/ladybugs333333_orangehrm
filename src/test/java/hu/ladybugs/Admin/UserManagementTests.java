@@ -35,8 +35,6 @@ public class UserManagementTests extends DriverBaseTest {
         userManagementPage = new UserManagementPage(driver, wait);
         userManagementPage.loadLoginPage();
         userManagementPage.loginWithValidUsernameAndValidPassword();
-//        userManagementPage.navigateToMyInfoMenu();
-//        userManagementPage.setMyInfo();
         userManagementPage.navigateToAdminMenu();
         userManagementPage.addNewSystemUser();
     }
@@ -55,7 +53,6 @@ public class UserManagementTests extends DriverBaseTest {
         userManagementPage = new UserManagementPage(driver, wait);
         userManagementPage.loadLoginPage();
         userManagementPage.loginWithValidUsernameAndValidPassword();
-//        userManagementPage.navigateToMyInfoMenu();
         userManagementPage.navigateToAdminMenu();
         userManagementPage.deleteSystemUser();
     }
@@ -78,6 +75,15 @@ public class UserManagementTests extends DriverBaseTest {
         userManagementPage.searchSystemUser();
     }
 
+    @Test(description = "Checking that reset button operates in search function.")
+    public void searchSystemUserWithResetTest() throws InterruptedException {
+        userManagementPage = new UserManagementPage(driver, wait);
+        userManagementPage.loadLoginPage();
+        userManagementPage.loginWithValidUsernameAndValidPassword();
+        userManagementPage.navigateToAdminMenu();
+        userManagementPage.searchSystemUserWithReset();
+    }
+
     @Test(description = "Checking that edit user function operates.")
     public void editSystemUserTest() throws InterruptedException {
         userManagementPage = new UserManagementPage(driver, wait);
@@ -86,6 +92,17 @@ public class UserManagementTests extends DriverBaseTest {
         userManagementPage.navigateToAdminMenu();
         userManagementPage.editSystemUser();
     }
+
+    @Test(description = "Checking that cancel button operates in edit user function.")
+    public void editSystemUserWithCancelTest() throws InterruptedException {
+        userManagementPage = new UserManagementPage(driver, wait);
+        userManagementPage.loadLoginPage();
+        userManagementPage.loginWithValidUsernameAndValidPassword();
+        userManagementPage.navigateToAdminMenu();
+        userManagementPage.editSystemUserWithCancel();
+    }
+
+   
 
 
 

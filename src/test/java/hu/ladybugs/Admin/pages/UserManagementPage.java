@@ -7,6 +7,8 @@ import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
+import java.util.Random;
+
 public class UserManagementPage {
     WebDriver driver;
     WebDriverWait wait;
@@ -30,17 +32,23 @@ public class UserManagementPage {
     By confirmPasswordBy = By.xpath("//*[@id=\"app\"]/div[1]/div[2]/div[2]/div/div/form/div[2]/div/div[2]/div/div[2]/input");
     By saveButtonBy = By.xpath("//*[@id=\"app\"]/div[1]/div[2]/div[2]/div/div/form/div[3]/button[2]");
     By cancelButtonBy = By.xpath("//*[@id=\"app\"]/div[1]/div[2]/div[2]/div/div/form/div[3]/button[1]");
-    By checkboxToDeleteBy = By.xpath("//*[@id=\"app\"]/div[1]/div[2]/div[2]/div/div[2]/div[3]/div/div[2]/div[2]/div/div[1]/div/div/label/span/i");
+    By checkboxToDeleteBy = By.xpath("//*[@id=\"app\"]/div[1]/div[2]/div[2]/div/div[2]/div[3]/div/div[2]/div[3]/div/div[1]/div/div/label/span/i");
     By deleteSelectedButtonBy = By.xpath("//*[@id=\"app\"]/div[1]/div[2]/div[2]/div/div[2]/div[2]/div/div/button");
     By deleteFromPopUpBy = By.xpath("//*[@id=\"app\"]/div[3]/div/div/div/div[3]/button[2]/i");
     By cancelFromPopUpBy = By.xpath("//*[@id=\"app\"]/div[3]/div/div/div/div[3]/button[1]");
+    By recordsFoundBy = By.xpath("//*[@id=\"app\"]/div[1]/div[2]/div[2]/div/div[2]/div[2]/div/span");
     By searchUserRoleArrayBy = By.xpath("//*[@id=\"app\"]/div[1]/div[2]/div[2]/div/div[1]/div[2]/form/div[1]/div/div[2]/div/div[2]/div/div/div[2]/i");
     By searchUserRoleFieldBy = By.xpath("//*[@id=\"app\"]/div[1]/div[2]/div[2]/div/div[1]/div[2]/form/div[1]/div/div[2]/div/div[2]/div/div/div[1]");
     By searchButtonBy = By.xpath("//*[@id=\"app\"]/div[1]/div[2]/div[2]/div/div[1]/div[2]/form/div[2]/button[2]");
     By userRoleTypeBy = By.xpath("//*[@id=\"app\"]/div[1]/div[2]/div[2]/div/div[2]/div[3]/div/div[2]/div[1]/div/div[3]/div");
-    By pencilIconBy = By.xpath("//*[@id=\"app\"]/div[1]/div[2]/div[2]/div/div[2]/div[3]/div/div[2]/div[1]/div/div[6]/div/button[2]/i");
-    By editUserSaveButtonBy = By.xpath("//*[@id=\"app\"]/div[1]/div[2]/div[2]/div/div/form/div[2]/button[2]");
-
+    By resetButtonBy = By.xpath("//*[@id=\"app\"]/div[1]/div[2]/div[2]/div/div[1]/div[2]/form/div[2]/button[1]");
+    By userRoleTextBy = By.xpath("//*[@id=\"app\"]/div[1]/div[2]/div[2]/div/div[1]/div[2]/form/div[1]/div/div[2]/div/div[2]/div/div/div[1]");
+    By pencilIconBy = By.xpath("//*[@id=\"app\"]/div[1]/div[2]/div[2]/div/div[2]/div[3]/div/div[2]/div[3]/div/div[6]/div/button[2]/i");
+    By changePasswordCheckboxInEditUserBy = By.xpath("//*[@id=\"app\"]/div[1]/div[2]/div[2]/div/div/form/div[1]/div/div[5]/div/div[2]/div/label/span/i");
+    By newPasswordInEditUserBy = By.xpath("//*[@id=\"app\"]/div[1]/div[2]/div[2]/div/div/form/div[2]/div/div[1]/div/div[2]/input");
+    By confirmPasswordInEditUserBy = By.xpath("//*[@id=\"app\"]/div[1]/div[2]/div[2]/div/div/form/div[2]/div/div[2]/div/div[2]/input");
+    By editUserSaveButtonBy = By.xpath("//*[@id=\"app\"]/div[1]/div[2]/div[2]/div/div/form/div[3]/button[2]");
+    By editUserCancelButtonBy = By.xpath("//*[@id=\"app\"]/div[1]/div[2]/div[2]/div/div/form/div[3]/button[1]");
 
     public UserManagementPage(WebDriver driver, WebDriverWait wait) {
         this.driver = driver;
@@ -61,39 +69,12 @@ public class UserManagementPage {
         password.sendKeys("admin123");
         WebElement loginButton = driver.findElement(loginButtonBy);
         loginButton.click();
-//        driver.switchTo().alert().accept();
 
         Assert.assertEquals(driver.getCurrentUrl(), "https://opensource-demo.orangehrmlive.com/web/index.php/dashboard/index");
         System.out.println("Login with valid username and valid password was successful.");
 
     }
 
-//    public void navigateToMyInfoMenu() {
-//        WebElement myInfoMenu = driver.findElement(myInfoMenuBy);
-//        myInfoMenu.click();
-//        Assert.assertEquals(driver.getCurrentUrl(), "https://opensource-demo.orangehrmlive.com/web/index.php/pim/viewPersonalDetails/empNumber/7");
-//        System.out.println("Navigation to My Info menu is successful.");
-//    }
-//
-//    public void setMyInfo() {
-//        WebElement firstNameOnMyInfo = driver.findElement(firstNameOnMyInfoBy);
-//        firstNameOnMyInfo.click();
-//        firstNameOnMyInfo.clear();
-//        firstNameOnMyInfo.sendKeys("Milan");
-//
-//        WebElement lastNameOnMyInfo = driver.findElement(lastNameOnMyInfoBy);
-//        lastNameOnMyInfo.click();
-//        lastNameOnMyInfo.clear();
-//        lastNameOnMyInfo.sendKeys("Florian");
-//
-//        driver.findElement(By.cssSelector("body")).sendKeys(Keys.CONTROL, Keys.END);
-//
-//        WebElement saveButtonOnMyInfo = driver.findElement(saveButtonOnMyInfoBy);
-//        saveButtonOnMyInfo.click();
-//
-//        System.out.println("Setting the user name is successful.");
-//
-//    }
 
     public void navigateToAdminMenu() {
         WebElement adminMenu = driver.findElement(adminMenuBy);
@@ -135,16 +116,22 @@ public class UserManagementPage {
 
         WebElement usernameToNewUser = driver.findElement(usernameToNewUserBy);
         usernameToNewUser.clear();
-        usernameToNewUser.sendKeys("Mammamiam789");
+        Random randomGenerator = new Random();
+        int randomNumber = randomGenerator.nextInt(9999);
+        String userName = "AlmaMater" + randomNumber;
+        usernameToNewUser.sendKeys(userName);
+        Thread.sleep(2000);
 
 
         WebElement passwordToNewUser = driver.findElement(passwordToNewUserBy);
         passwordToNewUser.clear();
-        passwordToNewUser.sendKeys("Mamika7788!");
+        randomNumber = randomGenerator.nextInt(9999);
+        String password = "Mamika" + randomNumber + "!";
+        passwordToNewUser.sendKeys(password);
 
 
         WebElement confirmPassword = driver.findElement(confirmPasswordBy);
-        confirmPassword.sendKeys("Mamika7788!");
+        confirmPassword.sendKeys(password);
 
         WebElement saveButton = driver.findElement(saveButtonBy);
         saveButton.click();
@@ -190,23 +177,47 @@ public class UserManagementPage {
     }
 
     public void deleteSystemUser() throws InterruptedException {
+        WebElement recordsFound1 = driver.findElement(recordsFoundBy);
+
+        String recordsFound1Text = recordsFound1.getText();
         WebElement checkboxToDelete = driver.findElement(checkboxToDeleteBy);
         checkboxToDelete.click();
+
         WebElement deleteSelectedButton = driver.findElement(deleteSelectedButtonBy);
         deleteSelectedButton.click();
+
         WebElement deleteFromPopUp = driver.findElement(deleteFromPopUpBy);
         deleteFromPopUp.click();
-        System.out.println("Selected system user deleted successfully.");
+
         Thread.sleep(2000);
+
+        WebElement recordsFound2 = driver.findElement(recordsFoundBy);
+        String recordsFound2Text = recordsFound2.getText();
+
+        Assert.assertNotEquals(recordsFound1Text, recordsFound2Text);
+        System.out.println("Selected system user deleted successfully.");
+
     }
 
     public void deleteSystemUserWithCancel() {
+        WebElement recordsFound1 = driver.findElement(recordsFoundBy);
+
+        String recordsFound1Text = recordsFound1.getText();
         WebElement checkboxToDelete = driver.findElement(checkboxToDeleteBy);
         checkboxToDelete.click();
+
         WebElement deleteSelectedButton = driver.findElement(deleteSelectedButtonBy);
         deleteSelectedButton.click();
+
         WebElement cancelFromPopUp = driver.findElement(cancelFromPopUpBy);
         cancelFromPopUp.click();
+
+        checkboxToDelete.click();
+
+        WebElement recordsFound2 = driver.findElement(recordsFoundBy);
+        String recordsFound2Text = recordsFound2.getText();
+
+        Assert.assertEquals(recordsFound1Text, recordsFound2Text);
         System.out.println("No, Cancel button operates.");
 
     }
@@ -230,18 +241,70 @@ public class UserManagementPage {
 
     }
 
+    public void searchSystemUserWithReset() throws InterruptedException {
+        WebElement searchUserRoleArrow = driver.findElement(searchUserRoleArrayBy);
+        searchUserRoleArrow.click();
+
+        WebElement searchUserRoleField = driver.findElement(searchUserRoleFieldBy);
+        searchUserRoleField.click();
+        searchUserRoleField.sendKeys(Keys.DOWN);
+        searchUserRoleField.sendKeys(Keys.DOWN);
+        searchUserRoleField.sendKeys(Keys.RETURN);
+
+        WebElement resetButton = driver.findElement(resetButtonBy);
+        resetButton.click();
+        WebElement userRoleText = driver.findElement(userRoleTextBy);
+        System.out.println(userRoleText);
+        Thread.sleep(2000);
+        Assert.assertEquals(userRoleText.getText(), "-- Select --");
+
+        System.out.println("Reset search function operates.");
+
+    }
+
     public void editSystemUser() throws InterruptedException {
         WebElement pencilIcon = driver.findElement(pencilIconBy);
         pencilIcon.click();
 
+        WebElement changePasswordCheckboxInEditUser = driver.findElement(changePasswordCheckboxInEditUserBy);
+        changePasswordCheckboxInEditUser.click();
+
+        WebElement newPasswordInEditUser = driver.findElement(newPasswordInEditUserBy);
+
+        Random randomGenerator = new Random();
+        int randomNumber = randomGenerator.nextInt(9000)+1000;
+        String password = "Akarmi" + randomNumber + "!";
+        newPasswordInEditUser.sendKeys(password);
+        WebElement confirmPasswordEditUser = driver.findElement(confirmPasswordInEditUserBy);
+        confirmPasswordEditUser.sendKeys(password);
+
+        Thread.sleep(3000);
         WebElement editUserSaveButton = driver.findElement(editUserSaveButtonBy);
+//        WebElement editUserSaveButton = wait.until(ExpectedConditions.elementToBeClickable(editUserSaveButtonBy));
         editUserSaveButton.click();
-
-
-        Thread.sleep(30000);
-
-//        Assert.assertEquals(driver.getCurrentUrl(), "https://opensource-demo.orangehrmlive.com/web/index.php/admin/viewSystemUsers");
+        Thread.sleep(5000);
+        Assert.assertEquals(driver.getCurrentUrl(), "https://opensource-demo.orangehrmlive.com/web/index.php/admin/viewSystemUsers");
         System.out.println("Editing existing system user was successful.");
     }
+
+    public void editSystemUserWithCancel() throws InterruptedException {
+        WebElement pencilIcon = driver.findElement(pencilIconBy);
+        pencilIcon.click();
+
+        WebElement changePasswordCheckboxInEditUser = driver.findElement(changePasswordCheckboxInEditUserBy);
+        changePasswordCheckboxInEditUser.click();
+
+        WebElement newPasswordInEditUser = driver.findElement(newPasswordInEditUserBy);
+        newPasswordInEditUser.sendKeys("Akarmi229!");
+        WebElement confirmPasswordEditUser = driver.findElement(confirmPasswordInEditUserBy);
+        confirmPasswordEditUser.sendKeys("Akarmi229!");
+
+        WebElement editUserCancelButton = driver.findElement(editUserCancelButtonBy);
+        Thread.sleep(3000);
+        editUserCancelButton.click();
+        Assert.assertNotEquals(driver.getCurrentUrl(), "https://opensource-demo.orangehrmlive.com/web/index.php/admin/saveSystemUser/18");
+        System.out.println("In edit system user clicking on the cancel button was successful.");
+    }
+
 
 }
