@@ -109,7 +109,7 @@ public class ReportsPage {
         System.out.println("The new report has been saved");
     }
 
-    public void theEmployeeReportsSearchingCanBeReset(){
+    public void theEmployeeReportsSearchingCanBeReset(){  //HIBÁS (nem kattint a fieldbe)
         navigateToReportsMenuPoint();
         WebElement reportNameField = driver.findElement(By.xpath("//*[@id=\"app\"]/div[1]/div[2]/div[2]/div/div/form/div[1]/div/div/div/div[2]/input"));
         reportNameField.sendKeys("E");

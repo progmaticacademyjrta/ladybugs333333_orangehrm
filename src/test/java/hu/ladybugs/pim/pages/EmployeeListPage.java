@@ -126,7 +126,7 @@ public class EmployeeListPage {
         System.out.println("Deleting was successful.");
     }
 
-    public void editRecord(){
+    public void editRecord(){       //HIBÁS!
         navigateToPIMMenu();
         WebElement editIcon = driver.findElement(By.xpath("//*[@id=\"app\"]/div[1]/div[2]/div[2]/div/div[2]/div[3]/div/div[2]/div[17]/div/div[9]/div/button[2]"));
         editIcon.click();
