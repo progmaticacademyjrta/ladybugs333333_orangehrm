@@ -60,4 +60,13 @@ public class PersonalDetailsTests extends DriverBaseTest {
         personalDetailsPage.attachmentsAdd();
         personalDetailsPage.personalDetailsRecordsFoundEditingFunction();
     }
+
+    @Test
+    public void ssnNumberWhitInvalidCharacter() throws InterruptedException {
+        personalDetailsPage = new PersonalDetailsPage(driver, wait);
+        personalDetailsPage.loadHomePage();
+        personalDetailsPage.loginWhitValidUsernameAndValidPwd();
+        personalDetailsPage.ssnNumberWhitInvalidCharacter();
+
+    }
 }

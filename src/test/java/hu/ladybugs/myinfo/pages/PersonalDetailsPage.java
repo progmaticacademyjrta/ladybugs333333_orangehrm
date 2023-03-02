@@ -270,9 +270,22 @@ public class PersonalDetailsPage {
         WebElement savedMessageForAttachment = driver.findElement(confirmatoryMessageElement);
         wait.until(ExpectedConditions.elementToBeClickable(savedMessageForAttachment));
 
+    }
+
+    public void ssnNumberWhitInvalidCharacter() throws InterruptedException {
+        WebElement ssnNumber = driver.findElement(ssnNumberElement);
+        ssnNumber.sendKeys(Keys.chord(Keys.CONTROL, "a"));
+        ssnNumber.sendKeys(Keys.BACK_SPACE);
+        ssnNumber.click();
+        ssnNumber.sendKeys("dfk*,***");
+        WebElement personalDetailsSaveButton = driver.findElement(personalDetailsSaveButtonElement);
+        personalDetailsSaveButton.click();
+
+        WebElement savedMessage = driver.findElement(confirmatoryMessageElement);
+        wait.until(ExpectedConditions.elementToBeClickable(savedMessage));
+        Assert.assertTrue(!savedMessage.isDisplayed());
 
         Thread.sleep(7000);
-
 
     }
 }
