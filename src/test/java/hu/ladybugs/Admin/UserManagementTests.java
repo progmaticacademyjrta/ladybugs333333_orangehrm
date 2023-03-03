@@ -54,6 +54,7 @@ public class UserManagementTests extends DriverBaseTest {
         userManagementPage.loadLoginPage();
         userManagementPage.loginWithValidUsernameAndValidPassword();
         userManagementPage.navigateToAdminMenu();
+        userManagementPage.rewriteThreeUsername();
         userManagementPage.deleteSystemUser();
     }
 
@@ -63,7 +64,17 @@ public class UserManagementTests extends DriverBaseTest {
         userManagementPage.loadLoginPage();
         userManagementPage.loginWithValidUsernameAndValidPassword();
         userManagementPage.navigateToAdminMenu();
+        userManagementPage.rewriteThreeUsername();
         userManagementPage.deleteSystemUserWithCancel();
+    }
+
+    @Test(description = "Checking that user can select the first option in the search row from employee name.")
+    public void searchWithKeysSelectingTheFirstOption() throws InterruptedException {
+        userManagementPage = new UserManagementPage(driver, wait);
+        userManagementPage.loadLoginPage();
+        userManagementPage.loginWithValidUsernameAndValidPassword();
+        userManagementPage.navigateToAdminMenu();
+        userManagementPage.searchWithKeysSelectingTheFirstOption();
     }
 
     @Test(description = "Checking choosing an option to the User Role dropdown and clicking on the Search button.")
@@ -90,6 +101,7 @@ public class UserManagementTests extends DriverBaseTest {
         userManagementPage.loadLoginPage();
         userManagementPage.loginWithValidUsernameAndValidPassword();
         userManagementPage.navigateToAdminMenu();
+        userManagementPage.rewriteThreeUsername();
         userManagementPage.editSystemUser();
     }
 
@@ -99,6 +111,7 @@ public class UserManagementTests extends DriverBaseTest {
         userManagementPage.loadLoginPage();
         userManagementPage.loginWithValidUsernameAndValidPassword();
         userManagementPage.navigateToAdminMenu();
+        userManagementPage.rewriteThreeUsername();
         userManagementPage.editSystemUserWithCancel();
     }
 

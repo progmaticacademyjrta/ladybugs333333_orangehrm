@@ -49,7 +49,13 @@ public class UserManagementPage {
     By confirmPasswordInEditUserBy = By.xpath("//*[@id=\"app\"]/div[1]/div[2]/div[2]/div/div/form/div[2]/div/div[2]/div/div[2]/input");
     By editUserSaveButtonBy = By.xpath("//*[@id=\"app\"]/div[1]/div[2]/div[2]/div/div/form/div[3]/button[2]");
     By editUserCancelButtonBy = By.xpath("//*[@id=\"app\"]/div[1]/div[2]/div[2]/div/div/form/div[3]/button[1]");
-
+    By firstPencilBy = By.xpath("//*[@id=\"app\"]/div[1]/div[2]/div[2]/div/div[2]/div[3]/div/div[2]/div[1]/div/div[6]/div/button[2]/i");
+    By secondPencilBy = By.xpath("//*[@id=\"app\"]/div[1]/div[2]/div[2]/div/div[2]/div[3]/div/div[2]/div[2]/div/div[6]/div/button[2]/i");
+    By thirdPencilBy = By.xpath("//*[@id=\"app\"]/div[1]/div[2]/div[2]/div/div[2]/div[3]/div/div[2]/div[3]/div/div[6]/div/button[2]/i");
+    By editUserNameBy = By.xpath("//*[@id=\"app\"]/div[1]/div[2]/div[2]/div/div/form/div[1]/div/div[4]/div/div[2]/input");
+    By editSaveButtonBy = By.xpath("//*[@id=\"app\"]/div[1]/div[2]/div[2]/div/div/form/div[2]/button[2]");
+    By employeeNameForSearchBy = By.xpath("//*[@id=\"app\"]/div[1]/div[2]/div[2]/div/div[1]/div[2]/form/div[1]/div/div[3]/div/div[2]/div/div/input");
+    By recordFoundBy = By.xpath("//*[@id=\"app\"]/div[1]/div[2]/div[2]/div/div[2]/div[2]/div/span");
     public UserManagementPage(WebDriver driver, WebDriverWait wait) {
         this.driver = driver;
         this.wait = wait;
@@ -118,7 +124,7 @@ public class UserManagementPage {
         usernameToNewUser.clear();
         Random randomGenerator = new Random();
         int randomNumber = randomGenerator.nextInt(9999);
-        String userName = "AlmaMater" + randomNumber;
+        String userName = "CatWoman" + randomNumber;
         usernameToNewUser.sendKeys(userName);
         Thread.sleep(2000);
 
@@ -126,7 +132,7 @@ public class UserManagementPage {
         WebElement passwordToNewUser = driver.findElement(passwordToNewUserBy);
         passwordToNewUser.clear();
         randomNumber = randomGenerator.nextInt(9999);
-        String password = "Mamika" + randomNumber + "!";
+        String password = "MyCatIsPretty" + randomNumber + "!";
         passwordToNewUser.sendKeys(password);
 
 
@@ -176,6 +182,52 @@ public class UserManagementPage {
         System.out.println("Cancel button operates.");
     }
 
+
+    public void rewriteThreeUsername() throws InterruptedException {
+        Random randomGenerator = new Random();
+        int randomNumber = randomGenerator.nextInt(1000);
+
+        WebElement firstPencil = driver.findElement(firstPencilBy);
+        firstPencil.click();
+        WebElement editUserName1 = driver.findElement(editUserNameBy);
+        while (!editUserName1.getAttribute("value").equals("")) {
+            editUserName1.sendKeys(Keys.BACK_SPACE);
+        }
+        editUserName1.sendKeys("thorTheConqueror" + randomNumber);
+        WebElement saveButton = driver.findElement(editSaveButtonBy);
+        Thread.sleep(3000);
+        saveButton.click();
+        Thread.sleep(3000);
+
+
+        WebElement secondPencil = driver.findElement(secondPencilBy);
+        secondPencil.click();
+        WebElement editUserName2 = driver.findElement(editUserNameBy);
+        while (!editUserName2.getAttribute("value").equals("")) {
+            editUserName2.sendKeys(Keys.BACK_SPACE);
+        }
+        editUserName2.sendKeys("ClarkKent" + randomNumber);
+        WebElement saveButton2 = driver.findElement(editSaveButtonBy);
+        Thread.sleep(3000);
+        saveButton2.click();
+        Thread.sleep(3000);
+
+        WebElement thirdPencil = driver.findElement(thirdPencilBy);
+        thirdPencil.click();
+        WebElement editUserName3 = driver.findElement(editUserNameBy);
+        while (!editUserName3.getAttribute("value").equals("")) {
+            editUserName3.sendKeys(Keys.BACK_SPACE);
+        }
+        editUserName3.sendKeys("Aquaman" + randomNumber);
+        WebElement saveButton3 = driver.findElement(editSaveButtonBy);
+        Thread.sleep(3000);
+        saveButton3.click();
+        Thread.sleep(3000);
+
+
+
+    }
+
     public void deleteSystemUser() throws InterruptedException {
         WebElement recordsFound1 = driver.findElement(recordsFoundBy);
 
@@ -220,6 +272,20 @@ public class UserManagementPage {
         Assert.assertEquals(recordsFound1Text, recordsFound2Text);
         System.out.println("No, Cancel button operates.");
 
+    }
+
+    public void searchWithKeysSelectingTheFirstOption() {
+        WebElement employeeNameForSearch = driver.findElement(employeeNameForSearchBy);
+        employeeNameForSearch.sendKeys("m");
+        employeeNameForSearch.sendKeys(Keys.DOWN);
+        employeeNameForSearch.sendKeys(Keys.RETURN);
+        WebElement searchButton = driver.findElement(searchButtonBy);
+        searchButton.click();
+
+        WebElement recordFound = driver.findElement(recordFoundBy);
+        String recordFoundString = recordFound.getText();
+        Assert.assertEquals(recordFoundString, "(1) Record Found");
+        System.out.println("Selecting the first option with keys in the search row with employee name was successful");
     }
 
     public void searchSystemUser() {
@@ -273,7 +339,7 @@ public class UserManagementPage {
 
         Random randomGenerator = new Random();
         int randomNumber = randomGenerator.nextInt(9000)+1000;
-        String password = "Akarmi" + randomNumber + "!";
+        String password = "BarkingDog" + randomNumber + "!";
         newPasswordInEditUser.sendKeys(password);
         WebElement confirmPasswordEditUser = driver.findElement(confirmPasswordInEditUserBy);
         confirmPasswordEditUser.sendKeys(password);
@@ -294,10 +360,14 @@ public class UserManagementPage {
         WebElement changePasswordCheckboxInEditUser = driver.findElement(changePasswordCheckboxInEditUserBy);
         changePasswordCheckboxInEditUser.click();
 
+        Random randomGenerator = new Random();
+        int randomNumber = randomGenerator.nextInt(9000)+1000;
+        String password = "CadAddicted" + randomNumber + "!";
+
         WebElement newPasswordInEditUser = driver.findElement(newPasswordInEditUserBy);
-        newPasswordInEditUser.sendKeys("Akarmi229!");
+        newPasswordInEditUser.sendKeys(password);
         WebElement confirmPasswordEditUser = driver.findElement(confirmPasswordInEditUserBy);
-        confirmPasswordEditUser.sendKeys("Akarmi229!");
+        confirmPasswordEditUser.sendKeys(password);
 
         WebElement editUserCancelButton = driver.findElement(editUserCancelButtonBy);
         Thread.sleep(3000);

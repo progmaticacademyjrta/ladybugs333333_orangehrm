@@ -23,7 +23,7 @@ public class JobTests extends DriverBaseTest {
         jobPage.addNewJobTitle();
     }
 
-    @Test(description = "Checking that admin can add a new job title.")
+    @Test(description = "Checking that admin can cancel adding a new job title.")
     public void addNewJobTitleWithCancelTest() throws InterruptedException {
         userManagementPage = new UserManagementPage(driver, wait);
         userManagementPage.loadLoginPage();
