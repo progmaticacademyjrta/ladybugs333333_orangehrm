@@ -111,6 +111,8 @@ public class EmergencyContactsPage {
         WebElement emergencyContactSubMenu = driver.findElement(emergencyContactSubMenuElement);
         emergencyContactSubMenu.click();
 
+        addNewEmergencyContacts();
+
         WebElement deleteIcon = driver.findElement(deleteIconElement);
         deleteIcon.click();
 
@@ -126,6 +128,8 @@ public class EmergencyContactsPage {
         WebElement emergencyContactSubMenu = driver.findElement(emergencyContactSubMenuElement);
         emergencyContactSubMenu.click();
 
+        addNewEmergencyContacts();
+
         WebElement deleteIcon = driver.findElement(deleteIconElement);
         deleteIcon.click();
 
@@ -139,6 +143,8 @@ public class EmergencyContactsPage {
     public void recordsFoundEditingFunction() throws InterruptedException {
         WebElement emergencyContactSubMenu = driver.findElement(emergencyContactSubMenuElement);
         emergencyContactSubMenu.click();
+
+
 
         WebElement editorPencilIcon = driver.findElement(editorPencilIconElement);
         editorPencilIcon.click();
