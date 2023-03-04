@@ -5,6 +5,7 @@ import hu.ladybugs.myinfo.pages.ContactDetailsPage;
 import org.testng.annotations.Test;
 
 public class ContactDetailsTests extends DriverBaseTest {
+
     ContactDetailsPage contactDetailsPage;
 
     @Test
