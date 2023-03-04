@@ -10,7 +10,7 @@ public class AdminEndToEndTest extends DriverBaseTest {
     UserManagementPage userManagementPage;
     JobPage jobPage;
 
-    @Test(description = "Checking that edit user function operates.")
+    @Test(description = "Checking that admin menu operates.")
     public void adminEntToEndTest() throws InterruptedException {
         userManagementPage = new UserManagementPage(driver, wait);
         jobPage = new JobPage(driver, wait);
@@ -35,9 +35,6 @@ public class AdminEndToEndTest extends DriverBaseTest {
         jobPage.deleteJobTitle();
         jobPage.editJobTitleWithCancel();
         jobPage.editJobTitle();
-
-
-
 
     }
 }
