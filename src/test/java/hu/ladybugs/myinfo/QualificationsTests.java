@@ -1,4 +1,8 @@
 package hu.ladybugs.myinfo;
 
-public class QualificationsTests {
+import hu.ladybugs.driverfactory.DriverBaseTest;
+import hu.ladybugs.myinfo.pages.QualificationsPage;
+
+public class QualificationsTests extends DriverBaseTest {
+    QualificationsPage QualificationsPage;
 }
