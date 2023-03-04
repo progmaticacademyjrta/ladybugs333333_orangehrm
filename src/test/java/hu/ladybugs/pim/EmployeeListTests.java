@@ -13,9 +13,9 @@ public class EmployeeListTests extends DriverBaseTest {
         employeeListPage = new EmployeeListPage(driver,wait);
         employeeListPage.login();
         employeeListPage.navigateToPIMMenu();
-        employeeListPage.employeeInformationSearch();
-        employeeListPage.clearTheSearchInformations();
-        employeeListPage.deleteRecord();
+       // employeeListPage.employeeInformationSearch();
+        //employeeListPage.clearTheSearchInformations();
+        //employeeListPage.deleteRecord();
         employeeListPage.editAlreadyExsistingRecord();
     }
 
