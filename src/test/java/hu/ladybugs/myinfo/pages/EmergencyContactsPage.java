@@ -74,28 +74,28 @@ public class EmergencyContactsPage {
         emergencyContactAddButton.click();
 
         WebElement nameInputField = driver.findElement(nameInputFieldElement);
-        nameInputField.sendKeys(Keys.chord(Keys.CONTROL,"a"));
+        nameInputField.sendKeys(Keys.chord(Keys.CONTROL, "a"));
         nameInputField.sendKeys(Keys.BACK_SPACE);
         nameInputField.sendKeys("Peter");
 
 
         WebElement relationshipFiled = driver.findElement(relationshipFiledElement);
-        relationshipFiled.sendKeys(Keys.chord(Keys.CONTROL,"a"));
+        relationshipFiled.sendKeys(Keys.chord(Keys.CONTROL, "a"));
         relationshipFiled.sendKeys(Keys.BACK_SPACE);
         relationshipFiled.sendKeys("father");
 
         WebElement homeTelephoneField = driver.findElement(homeTelephoneFieldElement);
-        homeTelephoneField.sendKeys(Keys.chord(Keys.CONTROL,"a"));
+        homeTelephoneField.sendKeys(Keys.chord(Keys.CONTROL, "a"));
         homeTelephoneField.sendKeys(Keys.BACK_SPACE);
         homeTelephoneField.sendKeys("+361342345");
 
         WebElement mobileTelephoneField = driver.findElement(mobileTelephoneFieldElement);
-        mobileTelephoneField.sendKeys(Keys.chord(Keys.CONTROL,"a"));
+        mobileTelephoneField.sendKeys(Keys.chord(Keys.CONTROL, "a"));
         mobileTelephoneField.sendKeys(Keys.BACK_SPACE);
         mobileTelephoneField.sendKeys("+3630456789");
 
         WebElement workMobileField = driver.findElement(workMobileFieldElement);
-        workMobileField.sendKeys(Keys.chord(Keys.CONTROL,"a"));
+        workMobileField.sendKeys(Keys.chord(Keys.CONTROL, "a"));
         workMobileField.sendKeys(Keys.BACK_SPACE);
         workMobileField.sendKeys("+3618765434");
 
@@ -134,8 +134,6 @@ public class EmergencyContactsPage {
         deleteNoDeleteButton.click();
 
         Assert.assertTrue(deleteIcon.isDisplayed());
-        Thread.sleep(7000);
-
     }
 
     public void recordsFoundEditingFunction() throws InterruptedException {
@@ -147,18 +145,14 @@ public class EmergencyContactsPage {
 
         WebElement nameInputField = driver.findElement(nameInputFieldElement);
         Assert.assertTrue(nameInputField.isDisplayed());
-        nameInputField.sendKeys(Keys.chord(Keys.CONTROL,"a"));
+        nameInputField.sendKeys(Keys.chord(Keys.CONTROL, "a"));
         nameInputField.sendKeys(Keys.BACK_SPACE);
-        nameInputField.sendKeys("Valaki");
+        nameInputField.sendKeys("Somebody");
 
         WebElement saveButton = driver.findElement(saveButtonElement);
         saveButton.click();
 
         WebElement confirmationMessage = driver.findElement(confirmationMessageElement);
         confirmationMessage.isDisplayed();
-
-
-        Thread.sleep(7000);
-
     }
 }

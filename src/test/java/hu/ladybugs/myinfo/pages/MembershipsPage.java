@@ -8,7 +8,6 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
-import java.sql.SQLOutput;
 
 public class MembershipsPage {
     WebDriver driver;
@@ -33,6 +32,7 @@ public class MembershipsPage {
     By subscriptionRenewalDateInputElement = By.xpath("//*[@id=\"app\"]/div[1]/div[2]/div[2]/div/div/div/div[2]/div[1]/form/div[1]/div/div[6]/div/div[2]/div/div/input");
     By saveButtonElement = By.xpath("//*[@id=\"app\"]/div[1]/div[2]/div[2]/div/div/div/div[2]/div[1]/form/div[2]/button[2]");
     By confirmatoryMessageElement = By.id("oxd-toaster_1");
+
     public MembershipsPage(WebDriver driver, WebDriverWait wait) {
         this.driver = driver;
         this.wait = wait;
@@ -103,10 +103,10 @@ public class MembershipsPage {
         WebElement subscriptionRenewalDateInput = driver.findElement(subscriptionRenewalDateInputElement);
         subscriptionRenewalDateInput.sendKeys("2023-02-20");
 
-        WebElement saveButton= driver.findElement(saveButtonElement);
+        WebElement saveButton = driver.findElement(saveButtonElement);
         saveButton.click();
 
-        WebElement confirmatoryMessage= driver.findElement(confirmatoryMessageElement);
+        WebElement confirmatoryMessage = driver.findElement(confirmatoryMessageElement);
         wait.until(ExpectedConditions.elementToBeClickable(confirmatoryMessage));
         Assert.assertTrue(confirmatoryMessage.isDisplayed());
         Thread.sleep(7000);

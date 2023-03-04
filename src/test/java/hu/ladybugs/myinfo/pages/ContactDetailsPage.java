@@ -65,8 +65,7 @@ public class ContactDetailsPage {
         myInfoMenu.click();
         WebElement personalDetailsText = driver.findElement(personalDetailsSite);
         Assert.assertTrue(personalDetailsText.isDisplayed());
-        // WebElement myInfoMenuSpan = driver.findElement(By.cssSelector("span[class='oxd-text oxd-text--span oxd-main-menu-item--name']"));
-        //Assert.assertTrue(myInfoMenuSpan.isDisplayed());
+
     }
 
     public void contactDetailsFillingAndSaving() throws InterruptedException {
@@ -74,29 +73,29 @@ public class ContactDetailsPage {
         contactDetails.click();
 
         WebElement street1 = driver.findElement(street1Element);
-      //  street1.click();
-        street1.sendKeys(Keys.chord(Keys.CONTROL,"a"));
+        //  street1.click();
+        street1.sendKeys(Keys.chord(Keys.CONTROL, "a"));
         street1.sendKeys(Keys.BACK_SPACE);
         street1.sendKeys("Freedom Street");
 
         WebElement street2 = driver.findElement(street2Element);
         //street2.click();
-        street2.sendKeys(Keys.chord(Keys.CONTROL,"a"));
+        street2.sendKeys(Keys.chord(Keys.CONTROL, "a"));
         street2.sendKeys(Keys.BACK_SPACE);
         street2.sendKeys("Other Street");
 
         WebElement cityField = driver.findElement(cityFieldElement);
-        cityField.sendKeys(Keys.chord(Keys.CONTROL,"a"));
+        cityField.sendKeys(Keys.chord(Keys.CONTROL, "a"));
         cityField.sendKeys(Keys.BACK_SPACE);
         cityField.sendKeys("Budapest");
 
         WebElement stateField = driver.findElement(stateFieldElement);
-        stateField.sendKeys(Keys.chord(Keys.CONTROL,"a"));
+        stateField.sendKeys(Keys.chord(Keys.CONTROL, "a"));
         stateField.sendKeys(Keys.BACK_SPACE);
         stateField.sendKeys("kerület");
 
         WebElement zipCodeField = driver.findElement(zipCodeFieldElement);
-        zipCodeField.sendKeys(Keys.chord(Keys.CONTROL,"a"));
+        zipCodeField.sendKeys(Keys.chord(Keys.CONTROL, "a"));
         zipCodeField.sendKeys(Keys.BACK_SPACE);
         zipCodeField.sendKeys("1039");
 
@@ -109,27 +108,27 @@ public class ContactDetailsPage {
         getCountrySearch.sendKeys(Keys.RETURN);
 
         WebElement telephoneHomeField = driver.findElement(telephoneHomeFieldElement);
-        telephoneHomeField.sendKeys(Keys.chord(Keys.CONTROL,"a"));
+        telephoneHomeField.sendKeys(Keys.chord(Keys.CONTROL, "a"));
         telephoneHomeField.sendKeys(Keys.BACK_SPACE);
         telephoneHomeField.sendKeys("+3611234356");
 
         WebElement telephoneMobileField = driver.findElement(telephoneMobileFieldElement);
-        telephoneMobileField.sendKeys(Keys.chord(Keys.CONTROL,"a"));
+        telephoneMobileField.sendKeys(Keys.chord(Keys.CONTROL, "a"));
         telephoneMobileField.sendKeys(Keys.BACK_SPACE);
         telephoneMobileField.sendKeys("+3611234356");
 
         WebElement telephoneWorkField = driver.findElement(telephoneWorkFieldElement);
-        telephoneWorkField.sendKeys(Keys.chord(Keys.CONTROL,"a"));
+        telephoneWorkField.sendKeys(Keys.chord(Keys.CONTROL, "a"));
         telephoneWorkField.sendKeys(Keys.BACK_SPACE);
         telephoneWorkField.sendKeys("+3611234356");
 
         WebElement workEmail = driver.findElement(workEmailFieldElement);
-        workEmail.sendKeys(Keys.chord(Keys.CONTROL,"a"));
+        workEmail.sendKeys(Keys.chord(Keys.CONTROL, "a"));
         workEmail.sendKeys(Keys.BACK_SPACE);
         workEmail.sendKeys("john@gamil.com");
 
         WebElement otherEmailField = driver.findElement(otherEmailFieldElement);
-        otherEmailField.sendKeys(Keys.chord(Keys.CONTROL,"a"));
+        otherEmailField.sendKeys(Keys.chord(Keys.CONTROL, "a"));
         otherEmailField.sendKeys(Keys.BACK_SPACE);
         otherEmailField.sendKeys("london@gmail.com");
 
@@ -138,8 +137,6 @@ public class ContactDetailsPage {
 
         WebElement confirmationMessage = driver.findElement(confirmationMessageElement);
         confirmationMessage.isDisplayed();
-          Thread.sleep(7000);
-
-
+        Thread.sleep(7000);
     }
 }

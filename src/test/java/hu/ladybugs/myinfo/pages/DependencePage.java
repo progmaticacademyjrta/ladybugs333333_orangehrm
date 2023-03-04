@@ -66,7 +66,7 @@ public class DependencePage {
         addButton.click();
 
         WebElement nameField = driver.findElement(nameFieldElement);
-        nameField.sendKeys(Keys.chord(Keys.CONTROL,"a"));
+        nameField.sendKeys(Keys.chord(Keys.CONTROL, "a"));
         nameField.sendKeys(Keys.BACK_SPACE);
         nameField.sendKeys("Peter");
 
@@ -79,12 +79,11 @@ public class DependencePage {
         getRelationshipSelectInput.sendKeys(Keys.RETURN);
 
         WebElement dateOfBirthCalenderInput = driver.findElement(dateOfBirthCalenderInputElement);
-        dateOfBirthCalenderInput.sendKeys(Keys.chord(Keys.CONTROL,"a"));
+        dateOfBirthCalenderInput.sendKeys(Keys.chord(Keys.CONTROL, "a"));
         dateOfBirthCalenderInput.sendKeys(Keys.BACK_SPACE);
         dateOfBirthCalenderInput.sendKeys("2013-02-23");
 
         WebElement saveButton = driver.findElement(saveButtonElement);
         saveButton.click();
-
     }
 }

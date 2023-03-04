@@ -1,14 +1,11 @@
 package hu.ladybugs.myinfo.pages;
 
-import hu.ladybugs.login.pages.LoginPage;
+
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
-import org.testng.annotations.BeforeMethod;
-
-import static org.testng.Reporter.clear;
 
 public class PersonalDetailsPage {
     WebDriver driver;
@@ -80,8 +77,6 @@ public class PersonalDetailsPage {
         myInfoMenu.click();
         WebElement personalDetailsText = driver.findElement(personalDetailsSite);
         Assert.assertTrue(personalDetailsText.isDisplayed());
-        // WebElement myInfoMenuSpan = driver.findElement(By.cssSelector("span[class='oxd-text oxd-text--span oxd-main-menu-item--name']"));
-        //Assert.assertTrue(myInfoMenuSpan.isDisplayed());
 
     }
 
@@ -106,10 +101,6 @@ public class PersonalDetailsPage {
         lastName.click();
         lastName.sendKeys("Smith");
 
-        //WebElement nickName= driver.findElement(nickNameElement); // teszt alatt megnyitott oldalon ez az elem nem szerepel
-        //nickName.clear();
-        //nickName.click();
-        // nickName.sendKeys("Robi");
 
         WebElement employeeId = driver.findElement(employeeIdElement);
         employeeId.sendKeys(Keys.chord(Keys.CONTROL, "a"));
@@ -284,8 +275,5 @@ public class PersonalDetailsPage {
         WebElement savedMessage = driver.findElement(confirmatoryMessageElement);
         wait.until(ExpectedConditions.elementToBeClickable(savedMessage));
         Assert.assertTrue(!savedMessage.isDisplayed());
-
-        Thread.sleep(7000);
-
     }
 }
