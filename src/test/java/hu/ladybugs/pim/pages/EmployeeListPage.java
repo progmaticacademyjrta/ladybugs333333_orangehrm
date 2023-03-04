@@ -1,7 +1,6 @@
 package hu.ladybugs.pim.pages;
 
 import org.openqa.selenium.*;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
@@ -126,7 +125,7 @@ public class EmployeeListPage {
         System.out.println("Deleting was successful.");
     }
 
-    public void editRecord(){       //!
+    public void editAlreadyExsistingRecord(){       //!
         navigateToPIMMenu();
         WebElement editIcon = driver.findElement(By.xpath("//*[@id=\"app\"]/div[1]/div[2]/div[2]/div/div[2]/div[3]/div/div[2]/div[1]/div/div[9]/div/button[2]"));
         editIcon.click();

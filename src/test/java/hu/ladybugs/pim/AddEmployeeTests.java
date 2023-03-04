@@ -10,7 +10,7 @@ public class AddEmployeeTests extends DriverBaseTest {
     AddEmployeePage addEmployeePage;
     EmployeeListPage employeeListPage;
 
-    @Test(description = "")
+    @Test(description = "Navigate to Add Employee page and make tests on it.")
     public void navigateToAddEmployeePage(){
         employeeListPage = new EmployeeListPage(driver,wait);
         addEmployeePage = new AddEmployeePage(driver,wait);

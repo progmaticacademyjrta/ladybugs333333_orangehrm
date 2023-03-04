@@ -11,7 +11,7 @@ public class ConfigurationTests extends DriverBaseTest {
 
     ConfigurationPage configurationPage;
 
-    @Test(description = "")
+    @Test(description = "Try 3 menu point of the Configuration dropdown.")
     public void configurationsDropDownMenuIsUsable(){
         configurationPage = new ConfigurationPage(driver,wait);
         configurationPage.login();
