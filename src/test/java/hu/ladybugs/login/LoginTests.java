@@ -72,4 +72,19 @@ public class LoginTests {
         Assert.assertEquals(errorMessage.getText(), errorMsg);
         Thread.sleep(2000);
     }
+
+    @Then("the user should NOT be able to login successfully with empty credentials and {string} error message comes.")
+    public void validateNotLoginEmpty1(String errorMsg) throws InterruptedException {
+        WebElement errorMessage = driver.findElement(By.xpath("//*[@id=\"app\"]/div[1]/div/div[1]/div/div[2]/div[2]/form/div[1]/div/span"));
+        Assert.assertEquals(errorMessage.getText(), errorMsg);
+        Thread.sleep(2000);
+    }
+
+    @Then("the user should NOT be able to login successfully with another empty credentials and {string} error message comes.")
+    public void validateNotLoginEmpty2(String errorMsg) throws InterruptedException {
+        WebElement errorMessage = driver.findElement(By.xpath("//*[@id=\"app\"]/div[1]/div/div[1]/div/div[2]/div[2]/form/div[2]/div/span"));
+        Assert.assertEquals(errorMessage.getText(), errorMsg);
+        Thread.sleep(2000);
+    }
+
 }
