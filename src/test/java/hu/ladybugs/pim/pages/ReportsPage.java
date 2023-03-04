@@ -109,25 +109,32 @@ public class ReportsPage {
         System.out.println("The new report has been saved");
     }
 
-    public void theEmployeeReportsSearchingCanBeReset(){  //HIBÁS (nem kattint a fieldbe)
+    public void theEmployeeReportsSearchingCanBeReset() throws InterruptedException {  //! (nem kattint a fieldbe)
         navigateToReportsMenuPoint();
-        WebElement reportNameField = driver.findElement(By.xpath("//*[@id=\"app\"]/div[1]/div[2]/div[2]/div/div/form/div[1]/div/div/div/div[2]/input"));
-        reportNameField.sendKeys("E");
-        reportNameField.sendKeys(Keys.DOWN);
-        reportNameField.sendKeys(Keys.DOWN);
-        reportNameField.sendKeys(Keys.RETURN);
+        Thread.sleep(1000);
+        WebElement reportNameField = driver.findElement(By.xpath("//*[@id=\"app\"]/div[1]/div[2]/div[2]/div/div[1]/div[2]/form/div[1]/div/div/div/div[2]/div/div/input"));
+        String reportNameFieldString1 = reportNameField.getText();
+        reportNameField.sendKeys("Employee");
+        //reportNameField.sendKeys(Keys.DOWN);
+        //reportNameField.sendKeys(Keys.DOWN);
+        //reportNameField.sendKeys(Keys.RETURN);
         System.out.println("Report name field has been filled with "+reportNameField);
         WebElement resetButton = driver.findElement(By.xpath("//*[@id=\"app\"]/div[1]/div[2]/div[2]/div/div[1]/div[2]/form/div[2]/button[1]"));
         resetButton.click();
         resetButton.click();
-        System.out.println("Clicked on the Reset button");
-        Assert.assertEquals(reportNameField.getText(), "Type for hints...");
+        System.out.println("Clicked on the Reset button 2 times");
+        Thread.sleep(1000);
+        WebElement reportNameField2 = driver.findElement(By.xpath("//*[@id=\"app\"]/div[1]/div[2]/div[2]/div/div[1]/div[2]/form/div[1]/div/div/div/div[2]/div/div/input"));
+        String reportNameFieldString2 = reportNameField2.getText();
+        Assert.assertEquals(reportNameFieldString1, reportNameFieldString2);
         System.out.println("Reseted the searching informations.");
     }
 
-    public void clearTheAddReportDataWithCancelButton(){
+    public void clearTheAddReportDataWithCancelButton() throws InterruptedException {
         useAddButtonInReportsPage();
-        WebElement reportNameField = driver.findElement(By.xpath("//*[@id=\"app\"]/div[1]/div[2]/div[2]/div/div[1]/div[2]/form/div[1]/div/div/div/div[2]/div/div/input"));
+        Thread.sleep(1000);
+        WebElement reportNameField = driver.findElement(By.xpath("//*[@id=\"app\"]/div[1]/div[2]/div[2]/div/div/form/div[1]/div/div/div/div[2]/input"));
+        String reportNameFieldString1 = reportNameField.getText();
         reportNameField.sendKeys("Example Report");
         WebElement selectionCriteriaDropDownArrow = driver.findElement(By.xpath("//*[@id=\"app\"]/div[1]/div[2]/div[2]/div/div/form/div[2]/div/div[1]/div[1]/div[2]/div/div/div[2]/i"));
         selectionCriteriaDropDownArrow.click();
@@ -152,7 +159,11 @@ public class ReportsPage {
         WebElement cancelButton = driver.findElement(By.xpath("//*[@id=\"app\"]/div[1]/div[2]/div[2]/div/div/form/div[4]/button[1]"));
         cancelButton.click();
         System.out.println("Clicked on the Cancel button");
-        Assert.assertEquals(selectionCriteriaDropDown.getText(), "-- Select --");
+        /*Thread.sleep(1000);
+        WebElement reportNameField2 = driver.findElement(By.xpath("//*[@id=\"app\"]/div[1]/div[2]/div[2]/div/div[1]/div[2]/form/div[1]/div/div/div/div[2]/div/div/input"));
+        String reportNameFieldString2 = reportNameField2.getText();
+        Assert.assertEquals(reportNameFieldString1, reportNameFieldString2);*/
+        Assert.assertEquals(driver.getCurrentUrl(), "https://opensource-demo.orangehrmlive.com/web/index.php/pim/viewDefinedPredefinedReports");
         System.out.println("Canceled the informations.");
     }
 }

@@ -13,7 +13,7 @@ public class ReportsTests extends DriverBaseTest {
     ReportsPage reportsPage;
 
     @Test(description = "")
-    public void navigateToReportsPage() {
+    public void navigateToReportsPage() throws InterruptedException {
         employeeListPage = new EmployeeListPage(driver, wait);
         addEmployeePage = new AddEmployeePage(driver, wait);
         reportsPage = new ReportsPage(driver,wait);
